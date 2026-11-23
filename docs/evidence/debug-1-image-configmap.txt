@@ -1,0 +1,39 @@
+==== APPLY BROKEN ====
+deployment.apps/cha-broken created
+service/cha-broken-svc created
+==== PODS AFTER BROKEN APPLY ====
+NAME                          READY   STATUS         RESTARTS   AGE   IP            NODE       NOMINATED NODE   READINESS GATES
+cha-broken-855d885d46-5mw9z   0/1     ErrImagePull   0          6s    10.244.0.13   minikube   <none>           <none>
+cha-broken-855d885d46-crxgq   0/1     ErrImagePull   0          6s    10.244.0.14   minikube   <none>           <none>
+badpod=cha-broken-855d885d46-5mw9z
+==== DESCRIBE IMAGE EVENTS ====
+    Image:          nginx:1.27-alpinee
+Events:
+  Type     Reason     Age   From               Message
+  ----     ------     ----  ----               -------
+  Normal   Scheduled  6s    default-scheduler  Successfully assigned cha-express/cha-broken-855d885d46-5mw9z to minikube
+  Normal   Pulling    6s    kubelet            spec.containers{web}: Pulling image "nginx:1.27-alpinee"
+  Warning  Failed     5s    kubelet            spec.containers{web}: Failed to pull image "nginx:1.27-alpinee": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:1.27-alpinee": failed to resolve reference "docker.io/library/nginx:1.27-alpinee": docker.io/library/nginx:1.27-alpinee: not found
+  Warning  Failed     5s    kubelet            spec.containers{web}: Error: ErrImagePull
+  Normal   BackOff    5s    kubelet            spec.containers{web}: Back-off pulling image "nginx:1.27-alpinee"
+  Warning  Failed     5s    kubelet            spec.containers{web}: Error: ImagePullBackOff
+==== FIX 1: image tag ====
+deployment.apps/cha-broken image updated
+==== PODS AFTER IMAGE FIX ====
+NAME                          READY   STATUS                       RESTARTS   AGE
+cha-broken-855d885d46-5mw9z   0/1     ImagePullBackOff             0          15s
+cha-broken-855d885d46-crxgq   0/1     ErrImagePull                 0          15s
+cha-broken-888b57599-gl6jz    0/1     CreateContainerConfigError   0          8s
+==== DESCRIBE CONFIGMAP ERROR ====
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+Events:
+  Type     Reason     Age               From               Message
+  ----     ------     ----              ----               -------
+  Normal   Scheduled  14s               default-scheduler  Successfully assigned cha-express/cha-broken-855d885d46-5mw9z to minikube
+  Normal   BackOff    13s               kubelet            spec.containers{web}: Back-off pulling image "nginx:1.27-alpinee"
+  Warning  Failed     13s               kubelet            spec.containers{web}: Error: ImagePullBackOff
+  Normal   Pulling    2s (x2 over 14s)  kubelet            spec.containers{web}: Pulling image "nginx:1.27-alpinee"
+  Warning  Failed     0s (x2 over 13s)  kubelet            spec.containers{web}: Failed to pull image "nginx:1.27-alpinee": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:1.27-alpinee": failed to resolve reference "docker.io/library/nginx:1.27-alpinee": docker.io/library/nginx:1.27-alpinee: not found
+  Warning  Failed     0s (x2 over 13s)  kubelet            spec.containers{web}: Error: ErrImagePull

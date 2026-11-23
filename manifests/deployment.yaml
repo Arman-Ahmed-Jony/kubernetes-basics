@@ -1,0 +1,79 @@
+# Initial release for Task 4. Task 6 updated the running Deployment to
+# nginx:1.27-alpine. Applying this file again sets the image back to 1.25-alpine.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cha-web
+  namespace: cha-express
+  annotations:
+    kubernetes.io/change-cause: "Initial release: nginx 1.25-alpine"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cha-web
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: cha-web
+    spec:
+      containers:
+      - name: web
+        image: nginx:1.25-alpine
+        ports:
+        - name: http
+          containerPort: 80
+        env:
+        - name: SHOP_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: cha-config
+              key: SHOP_NAME
+        - name: CITY
+          valueFrom:
+            configMapKeyRef:
+              name: cha-config
+              key: CITY
+        - name: THEME_COLOR
+          valueFrom:
+            configMapKeyRef:
+              name: cha-config
+              key: THEME_COLOR
+        - name: OPENING_HOURS
+          valueFrom:
+            configMapKeyRef:
+              name: cha-config
+              key: OPENING_HOURS
+        - name: ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cha-secret
+              key: ADMIN_PASSWORD
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 2
+          periodSeconds: 5
+        resources:
+          requests:
+            cpu: 50m
+            memory: 32Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html
+        configMap:
+          name: cha-config
+          items:
+          - key: index.html
+            path: index.html

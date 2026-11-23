@@ -1,0 +1,87 @@
+==== SERVICE BEFORE SELECTOR FIX ====
+service_wget_failed_as_expected
+==== FIX 3: selector ====
+service/cha-broken-svc patched
+==== ENDPOINTSLICE ====
+  - addresses:
+    - 10.244.0.16
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: minikube
+    targetRef:
+      kind: Pod
+      name: cha-broken-689b958c6-m7rk8
+      name: cha-broken-689b958c6-m7rk8
+      namespace: cha-express
+      uid: c5ca14d4-64fb-4608-b8e8-5fec73b1657c
+  - addresses:
+    - 10.244.0.17
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: minikube
+    targetRef:
+      kind: Pod
+      name: cha-broken-689b958c6-lm2nl
+      name: cha-broken-689b958c6-lm2nl
+      namespace: cha-express
+      uid: 05cc66d0-7150-4164-abea-020d568ee747
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2026-11-23T15:57:16Z"
+    creationTimestamp: "2026-11-23T15:56:53Z"
+    generateName: cha-broken-svc-
+    generation: 2
+    labels:
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: cha-broken-svc
+      kubernetes.io/service-name: cha-broken-svc
+    name: cha-broken-svc-7lt4s
+    name: cha-broken-svc-7lt4s
+    namespace: cha-express
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: cha-broken-svc
+      name: cha-broken-svc
+      uid: c5d52581-f7e6-4f63-9e71-2c7ba1af231b
+    resourceVersion: "227120"
+    uid: b39f51cb-c414-49fe-b7c2-0866bdfea1fb
+  ports:
+  - name: ""
+    port: 8080
+broken_pod=cha-broken-689b958c6-lm2nl ip=10.244.0.17
+==== POD PORT 80 ====
+==== POD PORT 8080 ====
+port8080_failed_as_expected
+==== SERVICE AFTER SELECTOR FIX (targetPort still 8080) ====
+service_still_fails_wrong_targetport
+==== FIX 4: apply corrected manifest ====
+deployment.apps/cha-broken configured
+service/cha-broken-svc configured
+==== SERVICE AFTER TARGETPORT FIX ====
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+NAME                             READY   STATUS    RESTARTS   AGE
+pod/cha-broken-689b958c6-lm2nl   1/1     Running   0          32s
+pod/cha-broken-689b958c6-m7rk8   1/1     Running   0          33s
+pod/cha-web-5fb588979b-7dvmb     1/1     Running   0          4m2s
+pod/cha-web-5fb588979b-ktm6l     1/1     Running   0          4m29s
+pod/cha-web-5fb588979b-scd6t     1/1     Running   0          4m9s
+
+NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+service/cha-broken-svc   ClusterIP   10.107.115.109   <none>        80/TCP         55s
+service/cha-web          NodePort    10.98.49.83      <none>        80:30080/TCP   8m5s
+
+NAME                                                  ADDRESSTYPE   PORTS   ENDPOINTS                            AGE
+endpointslice.discovery.k8s.io/cha-broken-svc-7lt4s   IPv4          80      10.244.0.17,10.244.0.16              55s
+endpointslice.discovery.k8s.io/cha-web-zqmlc          IPv4          80      10.244.0.9,10.244.0.10,10.244.0.11   8m5s

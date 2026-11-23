@@ -1,0 +1,47 @@
+==== DESCRIBE NEW POD CONFIG ERROR ====
+    State:          Waiting
+      Reason:       CreateContainerConfigError
+    Ready:          False
+Events:
+  Type     Reason     Age               From               Message
+  ----     ------     ----              ----               -------
+  Normal   Scheduled  15s               default-scheduler  Successfully assigned cha-express/cha-broken-888b57599-gl6jz to minikube
+  Normal   Pulled     2s (x3 over 15s)  kubelet            spec.containers{web}: Container image "nginx:1.27-alpine" already present on machine and can be accessed by the pod
+  Warning  Failed     2s (x3 over 15s)  kubelet            spec.containers{web}: Error: configmap "cha-confg" not found
+  Warning  Failed     2s (x3 over 15s)  kubelet            spec.containers{web}: Error: configmap "cha-confg" not found
+  Warning  Failed     2s (x3 over 15s)  kubelet            spec.containers{web}: Error: configmap "cha-confg" not found
+==== FIX 2: configmap name ====
+deployment.apps/cha-broken patched
+Waiting for deployment "cha-broken" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "cha-broken" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "cha-broken" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "cha-broken" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "cha-broken" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "cha-broken" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "cha-broken" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "cha-broken" rollout to finish: 1 old replicas are pending termination...
+deployment "cha-broken" successfully rolled out
+==== PODS AFTER CONFIGMAP FIX ====
+NAME                         READY   STATUS        RESTARTS   AGE
+cha-broken-689b958c6-lm2nl   1/1     Running       0          1s
+cha-broken-689b958c6-m7rk8   1/1     Running       0          2s
+cha-broken-888b57599-gl6jz   0/1     Terminating   0          17s
+==== ENDPOINTS (selector still broken) ====
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2026-11-23T15:56:53Z"
+  creationTimestamp: "2026-11-23T15:56:53Z"
+  labels:
+    endpoints.kubernetes.io/managed-by: endpoint-controller
+  name: cha-broken-svc
+  namespace: cha-express
+  resourceVersion: "226937"
+  uid: 0a3afe1d-e66a-4095-8f7f-c60ec2be7267
+==== SVC SELECTOR VS POD LABELS ====
+selector={"app":"cha-brokn"}
+NAME                         READY   STATUS        RESTARTS   AGE   LABELS
+cha-broken-689b958c6-lm2nl   1/1     Running       0          1s    app=cha-broken,pod-template-hash=689b958c6
+cha-broken-689b958c6-m7rk8   1/1     Running       0          2s    app=cha-broken,pod-template-hash=689b958c6
+cha-broken-888b57599-gl6jz   0/1     Terminating   0          17s   app=cha-broken,pod-template-hash=888b57599

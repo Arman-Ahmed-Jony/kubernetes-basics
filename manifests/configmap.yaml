@@ -1,0 +1,96 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cha-config
+  namespace: cha-express
+data:
+  SHOP_NAME: "Rahim Mama's Cha"
+  CITY: "Dhaka"
+  THEME_COLOR: "#1F6B4A"
+  OPENING_HOURS: "6:00 AM - 11:00 PM"
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Rahim Mama's Cha</title>
+      <style>
+        :root { --clay: #1F6B4A; --ink: #2a2118; --paper: #f6efe4; --card: #fffaf3; }
+        * { box-sizing: border-box; }
+        body {
+          margin: 0;
+          font-family: Georgia, "Times New Roman", serif;
+          color: var(--ink);
+          background:
+            radial-gradient(circle at top, #f3d7b5 0, transparent 42%),
+            var(--paper);
+        }
+        main { max-width: 720px; margin: 0 auto; padding: 32px 20px 48px; }
+        header {
+          background: var(--clay);
+          color: #fffaf3;
+          border-radius: 18px;
+          padding: 28px 24px 22px;
+          box-shadow: 0 10px 24px rgba(90, 42, 12, 0.18);
+        }
+        h1 { margin: 0 0 6px; font-size: 2.2rem; letter-spacing: 0.02em; }
+        .tag { margin: 0; opacity: 0.95; }
+        .hours {
+          display: inline-block;
+          margin-top: 14px;
+          padding: 6px 12px;
+          border-radius: 999px;
+          background: rgba(255, 250, 243, 0.18);
+        }
+        ul { list-style: none; margin: 22px 0 0; padding: 0; }
+        li {
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
+          align-items: baseline;
+          background: var(--card);
+          border-left: 6px solid var(--clay);
+          border-radius: 12px;
+          margin: 12px 0;
+          padding: 14px 16px;
+        }
+        .name { font-size: 1.15rem; }
+        .note { display: block; font-family: sans-serif; font-size: 0.85rem; color: #6b5a4a; margin-top: 3px; }
+        .price { font-size: 1.2rem; color: var(--clay); white-space: nowrap; }
+        footer { margin-top: 18px; font-family: sans-serif; font-size: 0.9rem; color: #6b5a4a; }
+      </style>
+    </head>
+    <body>
+      <main>
+        <header>
+          <h1>Rahim Mama's Cha</h1>
+          <p class="tag">Evening special. A tea stall in Dhaka, now with an online menu.</p>
+          <p class="hours">Open 6:00 AM - 11:00 PM</p>
+        </header>
+        <ul>
+          <li>
+            <span><span class="name">Dudh Cha</span><span class="note">Milk tea, boiled the long way</span></span>
+            <span class="price">Tk 20</span>
+          </li>
+          <li>
+            <span><span class="name">Ada Cha</span><span class="note">Ginger, for rainy evenings</span></span>
+            <span class="price">Tk 25</span>
+          </li>
+          <li>
+            <span><span class="name">Lebu Cha</span><span class="note">Lemon, no milk</span></span>
+            <span class="price">Tk 20</span>
+          </li>
+          <li>
+            <span><span class="name">Masala Cha</span><span class="note">Cardamom, clove, and a little heat</span></span>
+            <span class="price">Tk 30</span>
+          </li>
+          <li>
+            <span><span class="name">Malai Cha</span><span class="note">A thick cup, if you ask nicely</span></span>
+            <span class="price">Tk 35</span>
+          </li>
+        </ul>
+        <footer>Pay at the stall. The kettle is always on.</footer>
+      </main>
+    </body>
+    </html>

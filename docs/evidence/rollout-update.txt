@@ -1,0 +1,114 @@
+==== ANNOTATE AND SET IMAGE ====
+deployment.apps/cha-web annotated
+deployment.apps/cha-web image updated
+==== IN PROGRESS ====
+-- sample 1 21:53:19 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     0s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     89s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     89s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     89s
+nodeport_http=200
+-- sample 2 21:53:19 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     0s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     89s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     89s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     89s
+nodeport_http=200
+-- sample 3 21:53:19 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     1s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     90s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     90s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     90s
+nodeport_http=200
+-- sample 4 21:53:20 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     1s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     90s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     90s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     90s
+nodeport_http=200
+-- sample 5 21:53:20 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     1s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     90s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     90s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     90s
+nodeport_http=200
+-- sample 6 21:53:21 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     2s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     91s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     91s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     91s
+nodeport_http=200
+-- sample 7 21:53:21 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     2s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     91s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     91s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     91s
+nodeport_http=200
+-- sample 8 21:53:21 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     3s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     92s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     92s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     92s
+nodeport_http=200
+-- sample 10 21:53:22 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     3s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     92s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     92s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     92s
+nodeport_http=200
+-- sample 12 21:53:22 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     3s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     92s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     92s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     92s
+nodeport_http=200
+-- sample 14 21:53:23 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     4s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     93s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     93s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     93s
+nodeport_http=200
+-- sample 16 21:53:23 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     4s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     93s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     93s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     93s
+nodeport_http=200
+-- sample 18 21:53:23 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     5s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     94s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     94s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     94s
+nodeport_http=200
+-- sample 20 21:53:24 --
+cha-web-5fb588979b-ktm6l   0/1   ContainerCreating   0     5s
+cha-web-6dc48c8978-8bn8p   1/1   Running             0     94s
+cha-web-6dc48c8978-l6qh4   1/1   Running             0     94s
+cha-web-6dc48c8978-r75t6   1/1   Running             0     94s
+nodeport_http=200
+==== ROLLOUT STATUS ====
+Waiting for deployment "cha-web" rollout to finish: 1 out of 3 new replicas have been updated...
+Waiting for deployment "cha-web" rollout to finish: 1 out of 3 new replicas have been updated...
+Waiting for deployment "cha-web" rollout to finish: 1 out of 3 new replicas have been updated...
+Waiting for deployment "cha-web" rollout to finish: 2 out of 3 new replicas have been updated...
+Waiting for deployment "cha-web" rollout to finish: 2 out of 3 new replicas have been updated...
+Waiting for deployment "cha-web" rollout to finish: 2 out of 3 new replicas have been updated...
+Waiting for deployment "cha-web" rollout to finish: 2 out of 3 new replicas have been updated...
+Waiting for deployment "cha-web" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "cha-web" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "cha-web" rollout to finish: 1 old replicas are pending termination...
+deployment "cha-web" successfully rolled out
+==== AFTER ====
+NAME                       READY   STATUS        RESTARTS   AGE    IP            NODE       NOMINATED NODE   READINESS GATES
+cha-web-5fb588979b-7dvmb   1/1     Running       0          3s     10.244.0.11   minikube   <none>           <none>
+cha-web-5fb588979b-ktm6l   1/1     Running       0          30s    10.244.0.9    minikube   <none>           <none>
+cha-web-5fb588979b-scd6t   1/1     Running       0          10s    10.244.0.10   minikube   <none>           <none>
+cha-web-6dc48c8978-8bn8p   1/1     Terminating   0          119s   10.244.0.8    minikube   <none>           <none>
+NAME                 DESIRED   CURRENT   READY   AGE
+cha-web-5fb588979b   3         3         3       30s
+cha-web-6dc48c8978   0         0         0       4m6s
+deployment.apps/cha-web 
+REVISION  CHANGE-CAUSE
+1         Update image to nginx:1.27-alpine
+2         Update image to nginx:1.27-alpine
+

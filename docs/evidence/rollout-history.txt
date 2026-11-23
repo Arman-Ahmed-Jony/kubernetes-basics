@@ -1,0 +1,7 @@
+deployment.apps/cha-web 
+REVISION  CHANGE-CAUSE
+1         Initial release: nginx 1.25-alpine
+3         Intentional bad image nginx:1.27-alpine-does-not-exist
+4         Rollback to nginx 1.27-alpine (first rolled out as: Update image to nginx:1.27-alpine)
+5         Restart pods to load updated THEME_COLOR
+
